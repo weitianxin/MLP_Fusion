@@ -229,36 +229,6 @@ def rewind(pre_weight):
     return recover_dict
 
 
-def pruning_model(model,px):
-
-    parameters_to_prune =[]
-    for ii in range(12):
-        parameters_to_prune.append((model.roberta.encoder.layer[ii].intermediate.dense, 'weight'))
-        parameters_to_prune.append((model.roberta.encoder.layer[ii].output.dense, 'weight'))
-
-    parameters_to_prune = tuple(parameters_to_prune)
-
-    prune.global_unstructured(
-        parameters_to_prune,
-        pruning_method=prune.L1Unstructured,
-        amount=px,
-    )
-
-
-def pruning_model_custom(model, mask_dict, sketch_layers_list):
-
-    parameters_to_prune =[]
-    mask_list = []
-    for ii in sketch_layers_list:
-        parameters_to_prune.append(model.roberta.encoder.layer[ii].intermediate.dense)
-        mask_list.append(mask_dict['roberta.encoder.layer.'+str(ii)+'.intermediate.dense.weight_mask'])
-        parameters_to_prune.append(model.roberta.encoder.layer[ii].output.dense)
-        mask_list.append(mask_dict['roberta.encoder.layer.'+str(ii)+'.output.dense.weight_mask'])
-
-
-    for ii in range(len(parameters_to_prune)):
-        prune.CustomFromMask.apply(parameters_to_prune[ii], 'weight', mask=mask_list[ii])
-
 
 def main():
     # See all possible arguments in src/transformers/training_args.py
@@ -517,19 +487,6 @@ def main():
     if config.ffn_mode == 'svd' and tune_args.sketch_layers:
         model.update_svd(convert_str_to_list(tune_args.sketch_layers))
     
-    # prunning
-    if config.ffn_mode == 'prune':
-        mask = torch.load("pretrain_prun/mask.pt")
-        pruning_model_custom(model, mask, convert_str_to_list(tune_args.sketch_layers))
-
-    # lottery ticket hypothesis
-    if config.ffn_mode == 'lth':
-        model = model.to(training_args.device)
-        mask = torch.load("pretrain_prun/mask_lth_{}.pt".format(data_args.task_name))
-        pruning_model_custom(model, mask, convert_str_to_list(tune_args.sketch_layers))
-
-    if config.ffn_mode == 'lth_pre':
-        origin_model_dict = rewind(model.state_dict())
 
     if config.ffn_mode in ["sketch", "cluster", "mmd"] and tune_args.re_init_layers:
         print("reinit layers: {}".format(tune_args.re_init_layers))
@@ -778,21 +735,6 @@ def main():
             checkpoint = training_args.resume_from_checkpoint
 
         train_result = trainer.train(resume_from_checkpoint=checkpoint)
-
-        
-        if tune_args.ffn_mode=="lth_pre":
-            print('starting pruning')
-            pruning_model(model.pretrained_model, 0.75)
-            print('rewinding')
-            model_dict = model.pretrained_model.state_dict()
-            model_dict.update(origin_model_dict)
-            mask_dict = {}
-            for key in model_dict.keys():
-                if 'mask' in key:
-                    mask_dict[key] = model_dict[key]   
-            torch.save(mask_dict, os.path.join("pretrain_prun", "mask_lth_{}.pt".format(data_args.task_name))) 
-            print("save finished")
-            exit()
 
         metrics = train_result.metrics
         max_train_samples = (

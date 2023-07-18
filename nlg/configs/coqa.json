@@ -1,0 +1,20 @@
+{
+    "seed": 321,
+    "task": "qa",
+    "model_name": "gpt2",
+    "model_checkpoint": "runs/Didealab-02_sketchFT_qa_2e-05_epoch5",
+    "n_epochs": 5,
+    "weight_decay": 0.1,
+    "warmup_ratio": 0.06,
+    "train_batch_size": 8,
+    "valid_batch_size": 8,
+    "gradient_accumulation_steps": 1,
+    "lr": 2e-05,
+    "ffn_mode": "sketch",
+    "sketch_layers": "4,5,6,7,8,9,10,11",
+    "ffn_bn": 768,
+    "mid_dim": 256,
+    "patience": 5,
+    "non_linearity": "relu",
+    "unfreeze_all": true
+}

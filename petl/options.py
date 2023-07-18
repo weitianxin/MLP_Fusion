@@ -100,7 +100,7 @@ class TuneArguments:
         default="none",
         metadata={
             "choices": ["adapter", "none", "lora", 
-                "sketch", "cluster", "mmd", "ntk_cluster", "svd", "prune", "lth", "lth_pre"],
+                "sketch", "cluster", "mmd", "ntk_cluster", "svd"],
 
             "help": "config for ffn, none to disable; \
             adapter: adapter mode; \

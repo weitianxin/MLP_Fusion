@@ -1,0 +1,20 @@
+{
+    "seed": 1041,
+    "task": "webnlg",
+    "model_name": "gpt2",
+    "model_checkpoint": "runs/Jan22_04-49-04_idealab-04_noneFT_5e5_webnlg_5e-05_epoch10",
+    "n_epochs": 10,
+    "weight_decay": 0.1,
+    "warmup_ratio": 0.06,
+    "train_batch_size": 8,
+    "valid_batch_size": 8,
+    "gradient_accumulation_steps": 1,
+    "lr": 5e-05,
+    "ffn_mode": "none",
+    "sketch_layers": "4,5,6,7,8,9,10,11",
+    "ffn_bn": 768,
+    "mid_dim": 256,
+    "patience": 5,
+    "non_linearity": "relu",
+    "unfreeze_all": true
+}

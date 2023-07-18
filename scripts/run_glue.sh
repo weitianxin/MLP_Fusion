@@ -51,9 +51,6 @@ ffn_mode='ntk_cluster'
 # ffn_mode='cluster'
 # ffn_mode='mmd'
 # ffn_mode='svd'
-# ffn_mode='prune'
-# ffn_mode='lth'
-# ffn_mode='lth_pre'
 
 n_steps=100
 
