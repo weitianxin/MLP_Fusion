@@ -117,29 +117,11 @@ Please cite the relevant paper if you use the code for scholarly or commercial p
   
 
 @InProceedings{wei-etal-2023-ntk,
-
-  
-
 title = {NTK-approximating MLP Fusion for Efficient Language Model Fine-tuning},
-
-  
-
 author = {Wei, Tianxin and Guo, Zeming and Chen, Yifan and He, Jingrui},
-
-  
-
 booktitle = {Proceedings of the 40th International Conference on Machine Learning},
-
-  
-
 year = {2023},
-
-  
-
 publisher = {PMLR},
-
-  
-
 }
 
 ```
