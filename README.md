@@ -114,7 +114,7 @@ Please cite the relevant paper if you use the code for scholarly or commercial p
 
 ```
 @InProceedings{pmlr-v202-wei23b,
-  title = 	 {{NTK}-approximating {MLP} Fusion for Efficient Language Model Fine-tuning},
+  title = 	 {NTK-approximating MLP Fusion for Efficient Language Model Fine-tuning},
   author =       {Wei, Tianxin and Guo, Zeming and Chen, Yifan and He, Jingrui},
   booktitle = 	 {Proceedings of the 40th International Conference on Machine Learning},
   pages = 	 {36821--36838},
