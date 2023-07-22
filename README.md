@@ -101,13 +101,13 @@ It will run "train.py" and "evaluate.py" with whatever configurations assigned t
 
   
 
-## Notice
+## Citation
 
   
 
   
 
-Please cite the relevant paper if you use the code for scholarly or commercial purposes.
+Please kindly cite our paper if you find the code/paper useful.
 
   
 
