@@ -16,7 +16,7 @@ This is the code repository for the paper "NTK-approximating MLP Fusion for Effi
   
   
 
-We proposed to create a light-weighted pretrained language model by clustering sub-MLPs into centroids that could be restored as a compressed MLP, which well approximates the NTK(neural tangent kernel) of the original MLP. We validated our method on both natural language understanding (NLU) and generation (NLG) tasks.
+We proposed to create a light-weighted pretrained language model by clustering sub-MLPs into centroids that could be restored as a compressed MLP, which well approximates the NTK (neural tangent kernel) of the original MLP. We validated our method on both natural language understanding (NLU) and generation (NLG) tasks.
 
  
 <img width="800" alt="image (2)" src="https://github.com/weitianxin/MLP_Fusion/assets/67295087/78d42331-30df-4e4e-9c3f-fa9e35e94500">
