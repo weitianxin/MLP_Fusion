@@ -66,7 +66,7 @@ It will run the "run_glue.py" with the set of modified configurations, which val
 
   
 
-  ### NLG Tasks
+### NLG Tasks
   
 To choose a set of configurations for the task, navigate to the file "nlg/scripts/run_nlg.sh". Within this file, you can choose to use any of configurations available in "nlg/configs" by modifying the parameters. In case you want to create your own set of configurations, you can do so by creating a new .json file within the "nlg/configs" directory. This way, you can customize the configurations according to your specific requirements.
 
@@ -98,7 +98,9 @@ sh run_nlg.sh
 ```
 It will run "train.py" and "evaluate.py" with whatever configurations assigned to trainings and validations.
   
+### MoE
 
+For switch transformers, please refer to ./switch, and execute the code similarly through 'sft_run.sh'.
   
 
 ## Citation
