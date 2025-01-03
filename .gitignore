@@ -144,3 +144,4 @@ dmypy.json
 # Specific file folder
 output/
 result/
+wandb/

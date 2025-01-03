@@ -17,14 +17,9 @@ from transformers import AutoTokenizer, AutoConfig, SwitchTransformersForConditi
 from torch import cuda
 device = 'cuda:3' if cuda.is_available() else 'cpu'
 
-import logging
 # warm-up
 from transformers import get_linear_schedule_with_warmup
 
-logging.basicConfig(level=logging.INFO,
-                    format='%(asctime)s: %(levelname)s| %(message)s',
-                    filename='training.log',  # Log to this file
-                    filemode='a')  # Append to the file, 'w' to overwrite
   
 def train(epoch, model, device, loader, optimizer, scheduler, wandb):
     model.train()
